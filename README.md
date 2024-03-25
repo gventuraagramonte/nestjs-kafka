@@ -24,8 +24,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
+This project has a integration with Kafka (Need to get up Kafka on docker)
 ## Installation
 
 ```bash
@@ -33,6 +32,13 @@ $ npm install
 ```
 
 ## Running the app
+
+```bash
+docker container run -dp 9092:9092 apache/kafka:3.7.0
+# This is important note because it takes the sql init that is in the .docker folder to create the payments and orders databases
+docker run --name my-mysql -v ./.docker/mysql:/docker-entrypoint-initdb.d -e MYSQL_ROOT_PASSWORD=123456 -dp 3306:3306 mysql:8.0.30
+
+```
 
 ```bash
 # development
@@ -57,17 +63,3 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
