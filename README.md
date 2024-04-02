@@ -34,9 +34,13 @@ $ npm install
 ## Running the app
 
 ```bash
+# Need wait 5 minutes because Kafka needs to getup
 docker container run -dp 9092:9092 apache/kafka:3.7.0
 # This is important note because it takes the sql init that is in the .docker folder to create the payments and orders databases
 docker run --name my-mysql -v ./.docker/mysql:/docker-entrypoint-initdb.d -e MYSQL_ROOT_PASSWORD=123456 -dp 3306:3306 mysql:8.0.30
+
+## Migrate database fro app/payments and app/orders
+npx prisma migrate dev
 
 ```
 
